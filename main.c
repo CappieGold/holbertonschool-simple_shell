@@ -1,5 +1,10 @@
 #include "shell.h"
 
+/**
+ * main - entry point of the shell
+ * Return: 0 for success
+*/
+
 #define MAX_INPUT_SIZE 1024
 
 int main(void)
@@ -21,9 +26,7 @@ int main(void)
 		}
 		input[strcspn(input, "\n")] = '\0';
 		if (strcmp(input, "exit") == 0)
-		{
 			break;
-		}
 		pid = fork();
 		if (pid == -1)
 		{
@@ -41,9 +44,7 @@ int main(void)
 			_exit(EXIT_FAILURE);
 		}
 		else
-		{
 			waitpid(pid, NULL, 0);
-		}
 	}
 	if (input != NULL)
 		free(input);
