@@ -5,10 +5,6 @@
  * Return: 0 for success
 */
 
-#define MAX_INPUT_SIZE 1024
-
-#define MAX_INPUT_SIZE 1024
-
 int main(void)
 {
 	char *input = NULL;
