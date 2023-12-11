@@ -12,8 +12,6 @@ int main(void)
 	char *input = NULL;
 	size_t input_size = 0;
 	ssize_t chars_read;
-	pid_t pid;
-	char **args;
 
 	while (1)
 	{
@@ -27,24 +25,7 @@ int main(void)
 		input[strcspn(input, "\n")] = '\0';
 		if (strcmp(input, "exit") == 0)
 			break;
-		pid = fork();
-		if (pid == -1)
-		{
-			perror("fork");
-			break;
-		}
-		else if (pid == 0)
-		{
-			args = malloc(sizeof(char *) * 2);
-			args[0] = input;
-			args[1] = NULL;
-			execve(input, args, NULL);
-			perror("execve");
-			free(args);
-			_exit(EXIT_FAILURE);
-		}
-		else
-			waitpid(pid, NULL, 0);
+		execute_command(input);
 	}
 	if (input != NULL)
 		free(input);

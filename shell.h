@@ -8,4 +8,6 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+void execute_command(char *input);
+
 #endif
