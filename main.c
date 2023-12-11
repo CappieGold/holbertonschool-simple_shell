@@ -7,6 +7,8 @@
 
 #define MAX_INPUT_SIZE 1024
 
+#define MAX_INPUT_SIZE 1024
+
 int main(void)
 {
 	char *input = NULL;
@@ -15,7 +17,10 @@ int main(void)
 
 	while (1)
 	{
-		printf("#OnePieceShell$ ");
+		if (isatty(STDIN_FILENO))
+		{
+			printf("#OnePieceShell$ ");
+		}
 		chars_read = getline(&input, &input_size, stdin);
 		if (chars_read == -1)
 		{
