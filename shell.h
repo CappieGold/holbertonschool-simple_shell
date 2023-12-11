@@ -9,5 +9,6 @@
 #include <sys/wait.h>
 
 void execute_command(char *input);
+extern char **environ;
 
 #endif
