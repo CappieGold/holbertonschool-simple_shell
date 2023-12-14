@@ -8,7 +8,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-void execute_command(char *input);
+void execute_command(char *cmd);
+char *find_command_in_path(const char *cmd);
 extern char **environ;
 
 #endif
