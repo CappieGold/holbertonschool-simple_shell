@@ -7,7 +7,7 @@
 
 int main(void)
 {
-	char *input = NULL;
+	char *cmd = NULL;
 	size_t input_size = 0;
 	ssize_t chars_read;
 
@@ -17,18 +17,18 @@ int main(void)
 		{
 			printf("#OnePieceShell$ ");
 		}
-		chars_read = getline(&input, &input_size, stdin);
+		chars_read = getline(&cmd, &input_size, stdin);
 		if (chars_read == -1)
 		{
 			printf("\n");
+			free(cmd);
 			break;
 		}
-		input[strcspn(input, "\n")] = '\0';
-		if (strcmp(input, "exit") == 0)
-			break;
-		execute_command(input);
+
+		execute_command(cmd);
 	}
-	if (input != NULL)
-		free(input);
+
+	if (cmd != NULL)
+		free(cmd);
 	return (0);
 }
