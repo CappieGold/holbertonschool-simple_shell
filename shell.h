@@ -8,7 +8,15 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-void execute_command(char *input);
 extern char **environ;
+extern char *program_name;
 
-#endif
+int shell_loop(void);
+char *read_line(void);
+char **split_line(char *line);
+int execute(char **args);
+int builtin_exit(char **args);
+int builtin_env(char **args);
+void free_args(char **args);
+
+#endif /* SHELL_H */
