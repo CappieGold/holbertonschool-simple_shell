@@ -6,7 +6,7 @@
  *
  * Return: Always 1 to continue the shell.
  */
-int execute(char **args)
+int execute(char **args, char *program_name)
 {
 	pid_t pid;
 	int status;
@@ -36,8 +36,7 @@ int execute(char **args)
 	}
 	else
 	{
-		do
-		{
+		do {
 			waitpid(pid, &status, WUNTRACED);
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}

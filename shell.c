@@ -1,6 +1,5 @@
 #include "shell.h"
 
-char *program_name;
 /**
  * main - Main entry point for the simple shell.
  * @argc: Argument count.
@@ -10,9 +9,12 @@ char *program_name;
  */
 int main(int argc, char **argv)
 {
-    program_name = argv[0];
-	(void)argc;
-	(void)argv;
+	char *program_name;
 
-	return (shell_loop());
+	if (argc > 0)
+	program_name = argv[0];
+	else
+	program_name = "hsh";
+
+	return (shell_loop(program_name));
 }

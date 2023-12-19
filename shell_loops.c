@@ -5,14 +5,13 @@
  *
  * Return: Always EXIT_SUCCESS.
  */
-int shell_loop(void)
+int shell_loop(char *program_name)
 {
 	char *line;
 	char **args;
 	int status;
 
-	do
-	{
+	do {
 		if (isatty(STDIN_FILENO))
 		{
 			printf("$==> ");
@@ -20,7 +19,7 @@ int shell_loop(void)
 
 		line = read_line();
 		args = split_line(line);
-		status = execute(args);
+		status = execute(args, program_name);
 
 		free(line);
 		free(args);

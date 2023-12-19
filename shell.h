@@ -9,14 +9,14 @@
 #include <sys/wait.h>
 
 extern char **environ;
-extern char *program_name;
 
-int shell_loop(void);
+int shell_loop(char *program_name);
 char *read_line(void);
 char **split_line(char *line);
-int execute(char **args);
+int execute(char **args, char *program_name);
 int builtin_exit(char **args);
 int builtin_env(char **args);
 void free_args(char **args);
+int shell_loop(char *program_name);
 
 #endif /* SHELL_H */
