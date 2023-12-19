@@ -74,7 +74,6 @@ void handle_builtin_commands(char *argv[])
 	{
 		for (i = 0; environ[i] != NULL; i++)
 			printf("%s\n", environ[i]);
-		exit(0);
 	}
 }
 
