@@ -5,10 +5,11 @@
  * It determines the type of command
  * and calls the appropriate function to handle it.
  *
+ * @shell_name: name of my shell.
  * @cmd: The command string entered by the user.
  */
 
-void execute_command(char *cmd)
+void execute_command(char *shell_name, char *cmd)
 {
 	char *argv[64];
 	int argc = 0;
@@ -29,12 +30,12 @@ void execute_command(char *cmd)
 	if (argv[0][0] == '/')
 	{
 		if (!execute_full_path_command(argv))
-			printf("command not found: %s\n", argv[0]);
+			printf("%s: 1: %s: not found\n", shell_name, argv[0]);
 	}
 	else
 	{
 		if (!execute_path_command(argv))
-			printf("command not found: %s\n", argv[0]);
+			printf("%s: 1: %s: not found\n", shell_name, argv[0]);
 	}
 }
 
