@@ -1,0 +1,46 @@
+.TH SIMPLE_SHELL 1 "2023-12-19" "version 1.0" "Simple Shell Manual"
+.SH NAME
+simple_shell \- simple command interpreter
+.SH SYNOPSIS
+.B simple_shell
+.br
+echo "command" | ./simple_shell
+.SH DESCRIPTION
+Simple Shell is a simple UNIX command interpreter that replicates functionalities of the standard shell. It was developed as a part of the Holberton School curriculum.
+.PP
+This shell can execute commands read from the standard input.
+.SH FEATURES
+Simple Shell features include:
+.IP \[bu] 2
+Running in interactive and non-interactive mode.
+.IP \[bu] 2
+Executing commands in PATH.
+.IP \[bu] 2
+Handling built-in commands: exit, env.
+.IP \[bu] 2
+Simple error handling.
+.SH USAGE
+In interactive mode:
+.PP
+Start the shell and type commands, followed by the Enter key.
+.PP
+In non-interactive mode:
+.PP
+Pipe commands into the shell from echo or a script.
+.SH EXAMPLES
+.PP
+Running ls in interactive mode:
+.RS 4
+$> ./simple_shell
+.br
+$> ls -l
+.RE
+.PP
+Running ls in non-interactive mode:
+.RS 4
+$> echo "ls -l" | ./simple_shell
+.RE
+.SH AUTHORS
+Jonathan Huybrechts and Jérémy Carpentier.
+.SH SEE ALSO
+.B sh(1), bash(1)
