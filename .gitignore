@@ -4,3 +4,5 @@ test_shell.sh
 test_valgrind.sh
 hsh
 execve.c
+.editorconfig
+.gitignore
