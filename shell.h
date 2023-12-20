@@ -18,5 +18,8 @@ int builtin_exit(char **args);
 int builtin_env(char **args);
 void free_args(char **args);
 int shell_loop(char *program_name);
+char *find_command_in_path(char *cmd);
+char *my_strcpy(char *dest, const char *src, size_t n);
+int is_absolute_or_relative_path(char *path);
 
 #endif /* SHELL_H */

@@ -4,3 +4,4 @@ test_shell.sh
 test_valgrind.sh
 hsh
 execve.c
+simple_shell_tester.sh

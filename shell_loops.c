@@ -2,6 +2,7 @@
 
 /**
  * shell_loop - Main shell loop.
+ * @program_name: The name of the shell program.
  *
  * Return: Always EXIT_SUCCESS.
  */
