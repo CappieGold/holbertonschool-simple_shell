@@ -33,8 +33,7 @@ char *check_command_path(char **command_tokens, char **shell_args)
 		resolved_path = command_tokens[0];
 		if ((access(resolved_path, F_OK) == -1))
 		{
-			fprintf(stderr, "%s: %d: %s: No such file or directory\n",
-			shell_args[0], __LINE__, command_tokens[0]);
+			fprintf(stderr, "%s: No such file or directory\n", shell_args[0]);
 			return ("Path resolution failed");
 		}
 	}
