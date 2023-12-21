@@ -150,7 +150,8 @@ flowchart TD
     H --> I[Resolve Command Path]
     I --> J{Is Path Valid?}
     J -- Yes --> K[Execute Command]
-    K --> L{Was Execution Successful?}
+    K --> M[Wait for Command Completion with waitpid]
+    M --> L{Was Execution Successful?}
     L -- Yes --> B
     L -- No --> G
     J -- No --> G
