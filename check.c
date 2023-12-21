@@ -59,7 +59,7 @@ char *check_command_path(char **command_tokens, char **shell_args)
 			i++;
 		}
 		free(path_directories);
-		fprintf(stderr, "%s: %d: %s: No such file or directory\n",
+		fprintf(stderr, "%s: %d: %s: not found\n",
 		shell_args[0], __LINE__, command_tokens[0]);
 		return ("Path resolution failed");
 	}
