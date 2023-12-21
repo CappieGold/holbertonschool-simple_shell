@@ -130,3 +130,24 @@ hsh main.c shell.c test_ls_2
 hsh main.c shell.c test_ls_2
 $
 ```
+
+## FLOWCHART
+
+flowchart TD
+    A[Start Shell] --> B[Read User Input]
+    B --> C{Is Input Empty?}
+    C -- Yes --> B
+    C -- No --> D{Is Input a Builtin Command?}
+    D -- Yes --> E[Execute Builtin Command]
+    E --> F{Was Execution Successful?}
+    F -- Yes --> B
+    F -- No --> G[Handle Error]
+    G --> B
+    D -- No --> H[Parse and Tokenize Input]
+    H --> I[Resolve Command Path]
+    I --> J{Is Path Valid?}
+    J -- Yes --> K[Execute Command]
+    K --> L{Was Execution Successful?}
+    L -- Yes --> B
+    L -- No --> G
+    J -- No --> G
