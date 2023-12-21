@@ -9,19 +9,18 @@
  * the function returns the full path to the executable.
  *
  * @command_tokens: Array of command tokens; the first token is the command
- *                        to be checked.
+ *                  to be checked.
  * @shell_args: Array of arguments passed to the shell, used for error
- *                    messaging.
+ *              messaging.
  * Return: String containing the path to the executable if found; otherwise,
- *          returns "Path resolution failed" indicating failure to locate the
- *          command.
+ *         returns "Path resolution failed" indicating failure to locate the
+ *         command.
  *
  * Note: The function uses the access() system call to verify the existence and
  *       executability of the command. It is important to manage memory
  *       effectively, especially when dynamically constructing potential paths
  *       to the executable.
  */
-
 
 char *check_command_path(char **command_tokens, char **shell_args)
 {
@@ -42,11 +41,11 @@ char *check_command_path(char **command_tokens, char **shell_args)
 	else
 	{
 		strcpy(path_env_variable, getenv("PATH"));
-		path_directories = tokenizer_path(path_env_variable);
+		path_directories = tokenize_environment_path(path_env_variable);
 		while (path_directories[i])
 		{
-			combined_path = str_concat(path_separator, command_tokens[0]);
-			resolved_path = str_concat(path_directories[i], combined_path);
+			combined_path = concatenate_strings(path_separator, command_tokens[0]);
+			resolved_path = concatenate_strings(path_directories[i], combined_path);
 			if ((access(resolved_path, F_OK) == -1))
 			{
 				free(resolved_path), free(combined_path);
@@ -77,7 +76,7 @@ char *check_command_path(char **command_tokens, char **shell_args)
  *
  * @user_input: The string of user input to be checked.
  * Return: Returns 1 (true) if the input contains only whitespace characters;
- *          otherwise, returns 0 (false).
+ *         otherwise, returns 0 (false).
  *
  * Note: The function iterates through each character of the input string to
  *       check for non-whitespace characters. A return value of 0 indicates
