@@ -133,6 +133,9 @@ $
 
 ## FLOWCHART
 
+The following flowchart illustrates the basic operation of the shell:
+
+```mermaid
 flowchart TD
     A[Start Shell] --> B[Read User Input]
     B --> C{Is Input Empty?}
@@ -151,3 +154,4 @@ flowchart TD
     L -- Yes --> B
     L -- No --> G
     J -- No --> G
+    ```
