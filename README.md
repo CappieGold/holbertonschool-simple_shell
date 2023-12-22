@@ -157,3 +157,22 @@ flowchart TD
     L -- Yes --> B
     L -- No --> G
     J -- No --> G
+
+    ```mermaid
+    graph TD
+    A[Start Shell] --> B[Main Loop]
+    B --> C[Read User Input]
+    C --> D{Check if Input is Whitespace}
+    D -- Yes --> C
+    D -- No --> E[Tokenize Command Input]
+    E --> F{Is Command Built-in?}
+    F -- Yes --> G[Execute Built-in Command]
+    F -- No --> H[Check Command Path]
+    H -- Path Found --> I[Execute Command]
+    H -- Path Not Found --> J[Print Error]
+    I --> K{Is Exit Command?}
+    J --> B
+    K -- Yes --> L[Exit Shell]
+    K -- No --> B
+    G --> B
+    L --> M[End Shell]
