@@ -1,3 +1,4 @@
+![Logo](https://github.com/CappieGold/holbertonschool-printf/raw/master/DALL·E 2023-12-20 01.58.57 - An illustration of a vibrant, whimsical seahorse in a colorful underwater setting. Next to the seahorse, the word 'Holberton' is elegantly written in .png)
 # C - Simple Shell
 
 create our own shell, a simple UNIX command interpreter written in the C programming language.
