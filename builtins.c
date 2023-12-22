@@ -16,7 +16,8 @@
  * @user_input: User's input string from the standard input. This is not used
  * in this function, but is included for consistency with the function
  * signature required for built-in shell commands.
- * @shell_exit_status: Pointer to the shell's current exit status. Not used in this
+ * @shell_exit_status: Pointer to the shell's current exit status. Not used
+ * in this
  * function, but included for signature consistency.
  * The function does not modify the exit status.
  *
@@ -25,7 +26,8 @@
  * shell to determine whether to continue the read-eval-print loop (REPL).
  */
 
-int print_environment_variables(char **args, char *user_input, int *shell_exit_status)
+int print_environment_variables(char **args, char *user_input, int
+*shell_exit_status)
 {
 	int i = 0;
 
