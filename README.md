@@ -34,7 +34,7 @@ If the input contains more than just whitespace, it is passed to the `tokenize_c
 3. Executing Commands:
 
 The shell determines whether the entered command is a built-in (builtin) or external command. Built-in commands, like `print_environment_variables` or `exit_shell`, are executed directly by the shell.
-For external commands, the shell uses check_command_path to resolve the command's path. If the path is found, execute_command launches the command in a child process using `fork` and `execve`.
+For external commands, the shell uses `check_command_path` to resolve the command's path. If the path is found, `execute_command` launches the command in a child process using `fork` and `execve`.
 
 4. Process Management:
 
