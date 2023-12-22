@@ -1,3 +1,4 @@
+![Alt text](https://vscode-remote%252Bdev-002dcontainer-002b7b22686f737450617468223a222f55736572732f436170706965476f6c642f4465736b746f702f776f726b706c616365222c226c6f63616c446f636b6572223a66616c73652c2273657474696e6773223a7b22636f6e74657874223a226465736b746f702d6c696e7578227d7d.vscode-resource.vscode-cdn.net/workspaces/workplace/holbertonschool-simple_shell/image/DALL%25C2%25B7E%25202023-12-20%252001.58.57%2520-%2520An%2520illustration%2520of%2520a%2520vibrant%252C%2520whimsical%2520seahorse%2520in%2520a%2520colorful%2520underwater%2520setting.%2520Next%2520to%2520the%2520seahorse%252C%2520the%2520word%2520%2527Holberton%2527%2520is%2520elegantly%2520written%2520in%2520.png?version%253D1703205196467)
 # C - Simple Shell
 
 create our own shell, a simple UNIX command interpreter written in the C programming language.
