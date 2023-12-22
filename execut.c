@@ -8,34 +8,31 @@
  *
  * Return: 1 on success, -1 on failure.
  */
-int handle_command_execution(char *command_path, char **args,
-char *program_name)
-{
-	pid_t pid;
-	int status;
+int handle_command_execution(char *command_path, char **args, char *program_name) {
+    int resultat, status;
+    pid_t pid;
 
-	pid = fork();
-	if (pid == 0)
-	{
-		if (execvp(command_path ? command_path : args[0], args) == -1)
+    pid = fork();
+    if (pid == -1) {
+        perror("shell");
+        return (-1);
+    }
+    if (pid == 0) {
+        if (execvp(command_path ? command_path : args[0], args) == -1) {
+            fprintf(stderr, "%s: 1: %s: not found\n", program_name, args[0]);
+            exit(EXIT_FAILURE);
+        }
+    } else {
+		do
 		{
-			fprintf(stderr, "%s: 1: %s: not found\n", program_name, args[0]);
-			exit(EXIT_FAILURE);
-		}
-	}
-	else if (pid < 0)
-	{
-		perror("shell");
-		return (-1);
-	}
-	else
-	{
-		do {
 			waitpid(pid, &status, WUNTRACED);
-		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
-	}
+			}
+			while (!WIFEXITED(status) && !WIFSTOPPED(status));
 
-	return (1);
+        resultat = WIFEXITED(status);
+    }
+
+    return (resultat);
 }
 
 /**
@@ -47,6 +44,7 @@ char *program_name)
  */
 int check_command(char **args, char *program_name)
 {
+	int resultat;
 	char *command_path;
 
 	command_path = find_command_in_path(args[0]);
@@ -56,17 +54,20 @@ int check_command(char **args, char *program_name)
 		return (-1);
 	}
 
-	return (handle_command_execution(command_path, args, program_name));
+	resultat = handle_command_execution(command_path, args, program_name);
+	free(command_path);
+	return (resultat);
 }
 
 /**
  * execute - Execute a shell command or built-in function.
  * @args: The arguments for the command.
  * @program_name: The name of the program.
+ * @line: The input line.
  *
  * Return: 0 on success, 1 on exit command, -1 on failure.
  */
-int execute(char **args, char *program_name)
+int execute(char **args, char *program_name, char *line)
 {
 	if (args[0] == NULL)
 	{
@@ -75,7 +76,8 @@ int execute(char **args, char *program_name)
 
 	if (strcmp(args[0], "exit") == 0)
 	{
-		return (builtin_exit(args));
+		builtin_exit(args, line);
+		return (1);
 	}
 
 	return (check_command(args, program_name));

@@ -11,6 +11,8 @@ int main(int argc, char **argv)
 {
 	char *program_name;
 
+	signal(SIGINT, signal_handler);
+
 	if (argc > 0)
 	program_name = argv[0];
 	else

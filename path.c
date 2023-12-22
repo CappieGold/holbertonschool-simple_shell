@@ -1,25 +1,30 @@
 #include "shell.h"
 
 /**
- * str_concat - Concatenates two strings, allocating necessary space.
- * @s1: First string.
- * @s2: Second string.
+ * str_concat -concaten 2 string of character.
+ * @str1: first string.
+ * @str2: second string.
  *
- * Return: Pointer to the newly allocated string.
+ * Return:Pointer to the new string, or NULL if fail.
  */
-char *str_concat(char *s1, char *s2)
+char *str_concat(const char *str1, const char *str2)
 {
 	char *result;
 
-	result = malloc(strlen(s1) + strlen(s2) + 1);
-
-	if (result == NULL)
+	if (!str1 || !str2)
 	{
-		perror("malloc");
 		return (NULL);
 	}
-	my_strcpy(result, s1, strlen(s1) + 1);
-	strcat(result, s2);
+
+	result = malloc(strlen(str1) + strlen(str2) + 1);
+	if (!result)
+	{
+		return (NULL);
+	}
+
+	strcpy(result, str1);
+	strcat(result, str2);
+
 	return (result);
 }
 
@@ -43,32 +48,38 @@ int is_executable(char *path)
  */
 char *find_command_in_path(char *cmd)
 {
-	char *path = getenv("PATH");
-	char *path_copy, *token, *full_path;
+    char *path = getenv("PATH");
+    char *path_copy, *token, *full_path;
+    char *result = NULL;
 
-	if (path == NULL)
-		return (NULL);
-	path_copy = strdup(path);
-	if (path_copy == NULL)
-		return (NULL);
+    if (path == NULL)
+    {
+        return (NULL);
+    }
 
-	token = strtok(path_copy, ":");
-	while (token != NULL)
-	{
-		char *temp = str_concat(token, "/");
+    path_copy = my_strdup(path);
+    if (path_copy == NULL)
+    {
+        return (NULL);
+    }
 
-		full_path = str_concat(temp, cmd);
-		free(temp);
+    for (token = strtok(path_copy, ":"); token != NULL; token = strtok(NULL, ":"))
+    {
+        char *temp = str_concat(token, "/");
 
-		if (is_executable(full_path))
-		{
-			free(path_copy);
-			return (full_path);
-		}
-		free(full_path);
-		token = strtok(NULL, ":");
-	}
+        full_path = str_concat(temp, cmd);
+        free(temp);
 
-	free(path_copy);
-	return (NULL);
+        if (is_executable(full_path))
+        {
+            result = my_strdup(full_path);
+            free(full_path);
+            break;
+        }
+
+        free(full_path);
+    }
+
+    free(path_copy);
+    return (result);
 }

@@ -14,7 +14,8 @@ char *read_line(void)
 	{
 		if (feof(stdin))
 		{
-			exit(EXIT_SUCCESS);
+			free(line);
+			return (NULL);
 		}
 		else
 		{
