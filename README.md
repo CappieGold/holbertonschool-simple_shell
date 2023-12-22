@@ -138,27 +138,6 @@ Jérémy_And_Jonathan_Shell$
 The following flowchart illustrates the basic operation of the shell:
 
 ```mermaid
-flowchart TD
-    A[Start Shell] --> B[Read User Input]
-    B --> C{Is Input Empty?}
-    C -- Yes --> B
-    C -- No --> D{Is Input a Builtin Command?}
-    D -- Yes --> E[Execute Builtin Command]
-    E --> F{Was Execution Successful?}
-    F -- Yes --> B
-    F -- No --> G[Handle Error]
-    G --> B
-    D -- No --> H[Parse and Tokenize Input]
-    H --> I[Resolve Command Path]
-    I --> J{Is Path Valid?}
-    J -- Yes --> K[Execute Command]
-    K --> M[Wait for Command Completion with waitpid]
-    M --> L{Was Execution Successful?}
-    L -- Yes --> B
-    L -- No --> G
-    J -- No --> G
-
-    ```mermaid
     graph TD
     A[Start Shell] --> B[Main Loop]
     B --> C[Read User Input]
