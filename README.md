@@ -166,6 +166,12 @@ drwxr-xr-x 16 vscode vscode   512 Dec 22 00:12 .git
 Jérémy_And_Jonathan_Shell$ 
 ```
 
+## Man page
+
+```bash
+$ man ./man_1_simple_shell
+```
+
 ## FLOWCHART
 
 The following flowchart illustrates the basic operation of the shell:
