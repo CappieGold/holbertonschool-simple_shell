@@ -1,4 +1,4 @@
-![Logo](https://github.com/CappieGold/holbertonschool-simple_shell/raw/master/image.png)
+![Logo](https://github.com/CappieGold/holbertonschool-simple_shell/master/image.png)
 
 # C - Simple Shell
 
