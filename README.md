@@ -20,6 +20,39 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 - How to suspend the execution of a process until one of its children terminates
 - What is `EOF` / “end-of-file”?
 
+## Shell explanation
+
+1. Main Loop:
+
+OWN shell enters a main loop when it's launched. This loop is the heart of the shell, handling the reading of user inputs, execution of commands, and maintaining the state of the shell.
+
+1. Reading and Analyzing Inputs:
+
+When a user enters a command, the shell reads this input. It first checks if the input is composed only of whitespace (using the `check_if_input_is_whitespace` function). If so, the input is ignored, and the shell waits for a new command.
+If the input contains more than just whitespace, it is passed to the `tokenize_command_input` function which breaks it down into individual tokens (words), facilitating the analysis of the command and its arguments.
+
+1. Executing Commands:
+
+The shell determines whether the entered command is a built-in (builtin) or external command. Built-in commands, like `print_environment_variables` or `exit_shell`, are executed directly by the shell.
+For external commands, the shell uses check_command_path to resolve the command's path. If the path is found, execute_command launches the command in a child process using `fork` and `execve`.
+
+1. Process Management:
+
+When executing an external command, the shell creates a child process. The parent process (the shell) waits for the child process to finish before resuming the main loop. This allows commands to be executed in isolation, without affecting the shell process itself.
+
+1. Exiting the Shell:
+
+If the user enters the `exit` command, the `exit_shell` function is called. This function allows the user to terminate the shell session. It can also take an optional argument to specify the shell's exit status.
+
+1. Error Handling:
+
+Own shell includes error handling, for example, when unrecognized commands are entered or when the path resolution fails. Appropriate error messages are displayed, helping to diagnose problems.
+
+1. Environment Variables:
+
+A built-in feature to display environment variables (`print_environment_variables`) helps to understand the context in which the shell operates, which is useful for debugging and configuration.
+
+In summary, own shell functions as an interactive command interpreter, processing user inputs, executing built-in and external commands, managing processes, and providing useful feedback. The modular structure of your code, with separate functions for different tasks, makes your shell extensible and maintainable.
 
 ## Output
 
