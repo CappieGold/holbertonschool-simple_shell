@@ -1,5 +1,3 @@
-![Logo](https://github.com/CappieGold/holbertonschool-simple_shell/master/image.png)
-
 # C - Simple Shell
 
 create our own shell, a simple UNIX command interpreter written in the C programming language.
